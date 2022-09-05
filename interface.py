@@ -21,5 +21,9 @@ def check_HDL(HDLValue):
     else: 
         return "Normal"
 
+def HDLDriver(): 
+    HDLValue = inputHDL()
+    answer = check_HDL(HDLValue)
+    return answer
 
 interface()
