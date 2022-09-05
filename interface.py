@@ -3,6 +3,7 @@ def interface():
     print("Options:")
     print("1 - Analyze HDL")
     print("2 - Analyze LDL")
+    print("3 - Analyze Total Cholesterol")
     print("9 - Quit")
     
     keepRunning = True
@@ -61,6 +62,31 @@ def LDLDriver():
     LDLValue = inputLDL()
     answer = check_LDL(LDLValue)
     OutputLDLResult(LDLValue, answer)
+
+
+
+
+
+def inputTotalCholesterol():
+    TotalCholesterolInput = input(""Enter the TotalCholesterol value:) #This string will contain an int 
+    return int(TotalCholesterolInput)
+    
+def check_TotalCholesterol(TotalCholesterolValue):
+    if TotalCholesterolValue < 200:
+        return "Normal"
+    elif TotalCholesterolValue < 239:
+        return "Borderline High"
+    else: 
+        return "High"
+
+def OutputTotalCholesterolResult(TotalCholesterolValue, charac):
+    print("The results for an TotalCholesterol value of {} is {}".format(TotalCholesterolValue, charac))
+
+
+def TotalCholesterolDriver(): 
+    TotalCholesterolValue = inputTotalCholesterol()
+    answer = check_TotalCholesterol(TotalCholesterolValue)
+    OutputTotalCholesterolResult(TotalCholesterolValue, answer)
 
 
 interface()
