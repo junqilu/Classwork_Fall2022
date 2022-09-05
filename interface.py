@@ -1,6 +1,7 @@
 def interface():
     print("My Program")
     print("Options:")
+    print("1 - Analyze HDL")
     print("9 - Quit")
     
     keepRunning = True
@@ -8,6 +9,8 @@ def interface():
         choice = input("Enter your choice: ")
         if choice == '9':
             return
+        elif choice == "1":
+            HDLDriver
 
 def inputHDL():
     HDLInput = input(""Enter the HDL value:) #This string will contain an int 
