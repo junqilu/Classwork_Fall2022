@@ -17,7 +17,7 @@ def interface():
             LDLDriver()
 
 def inputHDL():
-    HDLInput = input(""Enter the HDL value:) #This string will contain an int 
+    HDLInput = input("Enter the HDL value:") #This string will contain an int 
     return int(HDLInput)
     
 def check_HDL(HDLValue):
@@ -41,7 +41,7 @@ def HDLDriver():
 
 
 def inputLDL():
-    LDLInput = input(""Enter the LDL value:) #This string will contain an int 
+    LDLInput = input("Enter the LDL value:") #This string will contain an int 
     return int(LDLInput)
     
 def check_LDL(LDLValue):
