@@ -1,12 +1,22 @@
+class Patient:
+    def __init__(self, first_name, last_name, patient_id, age):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.patient_id = patient_id
+        self.age = age
+        self.tests = []
+
+    def full_name(self):
+        return '{} {}'.format(self.first_name, self.last_name)
+
+
+
 def create_patient_entry(patient_first_name,
                          patient_last_name, patient_id,
                          patient_age):
+    new_patient = Patient(patient_first_name, patient_last_name, patient_id, patient_age)
 
-    new_patient = {"First Name": patient_first_name,
-                   "Last Name": patient_last_name,
-                   "Id": patient_id,
-                   "Age": patient_age,
-                   "Tests": []}
+
     return new_patient
 
 
