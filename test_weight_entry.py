@@ -27,4 +27,4 @@ def test_parse_weight_input(input, expected):
 def test_add(a, b, expected):
     from weight_entry import add 
     answer = add(a,b)
-    assert answer == expected
+    assert answer == pytest.approx(expected)
