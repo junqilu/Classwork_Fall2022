@@ -8,10 +8,8 @@ app = Flask(__name__)
 
 @app.route('/',
            methods=['Get'])  # This means the route is just "/" so you can
-# get
-# here with
-# just the host name. When a request comes in with just a "/", it'll run the
-# server_status()
+# get here with just the host name. When a request comes in with just a
+# "/", it'll run the # server_status()
 def server_status():  # Your function name doesn't need to be the same as the
     # route, but they are usually the same
     return 'Server is on.'
