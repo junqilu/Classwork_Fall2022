@@ -37,9 +37,11 @@ def HDL_driver():
     hdl_value = input_value(test_name)
     answer = check_HDL(hdl_value)
     output_result(test_name, hdl_value, answer)
-    
+
+
 def output_result(test_name, hdl_value, charac):
-    print("The results for a {} value of {} is {}".format(test_name, hdl_value, charac))
+    print("The results for a {} value of {} is {}".format(test_name, hdl_value,
+                                                          charac))
 
 
 def check_LDL(LDL_value):
@@ -67,7 +69,8 @@ def check_total_cholesterol(total_value):
         return "Borderline high"
     else:
         return "High"
-        
+
+
 def total_driver():
     test_name = "Total Cholesterol"
     total_value = input_value(test_name)

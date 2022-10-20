@@ -15,10 +15,6 @@ import requests
 #     print('Bad request: {}'.format(r.text))
 
 
-
-
-
-
 # Professor has a server that can read out the information you send (part of
 # the in-class exercise)
 # output_info = {'name': 'Junqi Lu',
@@ -35,14 +31,10 @@ import requests
 # print(r.text)
 
 
-
-
-
-
 # In-class exercise with a classmate
 message = {'user': 'jl922', 'message': 'Hello world'}
 r = requests.post('http://vcm-21170.vm.duke.edu:5001/add_message',
-                  json = message)
+                  json=message)
 
 get = requests.get('http://vcm-21170.vm.duke.edu:5001/get_messages/Ziwei_He')
 print(get.text)
