@@ -13,7 +13,7 @@ import requests
 out_data = {'a': 50, 'b': 11}
 r = requests.post('http://127.0.0.1:5000/add_numbers', json=out_data)
 print(r.status_code)
-print(r.text) #r.text is a text str
-answer = r.json() #Now whatever in r has been decoded, in this case, into a
+print(r.text)  # r.text is a text str
+answer = r.json()  # Now whatever in r has been decoded, in this case, into a
 # real int
 print(type(answer))

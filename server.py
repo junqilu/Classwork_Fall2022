@@ -12,7 +12,7 @@ app = Flask(__name__)
 # here with
 # just the host name. When a request comes in with just a "/", it'll run the
 # server_status()
-def server_status(): #Your function name doesn't need to be the same as the
+def server_status():  # Your function name doesn't need to be the same as the
     # route, but they are usually the same
     return 'Server is on.'
 
@@ -34,11 +34,12 @@ def hdl_check_from_internet():
     from blood_calculator import check_HDL
     in_data = request.get_json()
     hdl_value = in_data['hdl_value']
-    print('The recieved value was {}'.format(hdl_value))
+    print('The received value was {}'.format(hdl_value))
     answer = check_HDL(hdl_value)  # This will print to the window of your
     # server (the server side). This printout won't show up on the client
     # side. The client side can only see the returned values
     return answer
+
 
 @app.route('/add_numbers', methods=['POST'])
 def sum_numbers_from_internet():
@@ -48,6 +49,7 @@ def sum_numbers_from_internet():
     in_data = request.get_json()
     answer = in_data['a'] + in_data['b']
     return jsonify(answer)
+
 
 if __name__ == '__main__':
     app.run()
