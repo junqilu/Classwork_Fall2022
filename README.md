@@ -1,6 +1,6 @@
 # Patient Health Database
 
-https://github.com/junqilu/Classwork_Fall2022/actions/workflows/pytest_runner.yml/badge.svg
+![example workflow](https://github.com/junqilu/Classwork_Fall2022/actions/workflows/pytest_runner.yml/badge.svg)
 
 Author: Junqi Lu
 
