@@ -8,10 +8,8 @@ app = Flask(__name__)
 
 @app.route('/',
            methods=['Get'])  # This means the route is just "/" so you can
-# get
-# here with
-# just the host name. When a request comes in with just a "/", it'll run the
-# server_status()
+# get here with just the host name. When a request comes in with just a
+# "/", it'll run the # server_status()
 def server_status():  # Your function name doesn't need to be the same as the
     # route, but they are usually the same
     return 'Server is on.'
@@ -48,6 +46,11 @@ def sum_numbers_from_internet():
     """
     in_data = request.get_json()
     answer = in_data['a'] + in_data['b']
+    return jsonify(answer)
+
+@app.route('/add/<a>/<b>', methods=['GET'])
+def add_variable_url(a, b):
+    answer = int(a) + int(b)
     return jsonify(answer)
 
 
