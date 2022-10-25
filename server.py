@@ -48,6 +48,7 @@ def sum_numbers_from_internet():
     answer = in_data['a'] + in_data['b']
     return jsonify(answer)
 
+
 @app.route('/add/<a>/<b>', methods=['GET'])
 def add_variable_url(a, b):
     answer = int(a) + int(b)
