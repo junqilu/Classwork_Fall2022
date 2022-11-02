@@ -1,6 +1,9 @@
 # db_server.py
 
 from flask import Flask, request, jsonify
+import logging
+from pymodm import connect, MongoModel, fields
+from database_definition import Patient
 
 """
     Database format:  A list of patient dictionaries
@@ -14,7 +17,7 @@ from flask import Flask, request, jsonify
 """
 
 # Create a global variable to hold the database
-db = []
+# db = [] #Now we'll use MongoDB
 
 # Create an instance of the Flask server
 app = Flask(__name__)
@@ -43,12 +46,26 @@ def add_patient(patient_name, patient_id, blood_type):
     Returns:
         None
     """
-    new_patient = {"name": patient_name,
-                   "id": patient_id,
-                   "blood_type": blood_type,
-                   "test_name": [],
-                   "test_result": []}
-    db.append(new_patient)
+    # new_patient = {"name": patient_name,
+    #                "id": patient_id,
+    #                "blood_type": blood_type,
+    #                "test_name": [],
+    #                "test_result": []}
+    new_patient = Patient(name=patient_name,
+                          id=patient_id,
+                          blood_type=blood_type
+                          # You don't include list field or dict field that you
+                          # don't have values for yet. pymodm will make these
+                          # empty fields for you. Thus, you don't add
+                          # test_name and test_result here
+                          )  # This makes the local copy
+    added_patient = new_patient.save()  # new_patient.save() sends the
+    # local copy to mongodb and "added_patient = " allows you to obtain a
+    # copy of what gets sent out. The
+    # prof
+    # added this to ensure that
+    # it works
+    # db.append(new_patient) #Not used anymore after integerating mongodb
 
 
 def init_server():
@@ -62,9 +79,13 @@ def init_server():
     Returns:
         None
     """
-    add_patient("Ann Ables", 1, "A+")
-    add_patient("Bob Boyles", 2, "B+")
+    # add_patient("Ann Ables", 1, "A+")
+    # add_patient("Bob Boyles", 2, "B+")
     # initialization of logging could be added here
+    logging.basicConfig(filename='logFile.log', filemode='w')
+
+    connect("mongodb+srv://bme547classwork:9dPZglQj5n6g2m2A@bme547.1pu4j4v"
+            ".mongodb.net/health_db?retryWrites=true&w=majority")
 
 
 @app.route("/new_patient", methods=["POST"])
