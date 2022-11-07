@@ -191,16 +191,23 @@ def add_test_worker(in_data):
     add_test_to_patient(in_data)
     return 'Test added', 200
 def find_patient(patient_id):
-    for patient in db:
-        if patient['id'] == patient_id:
-            return patient
-    return False
+    from pymodm import errors as pymodm_errors
+
+    try:
+        found_patient = Patient.objects.raw({'_id':}).first()
+    except pymodm_errors.DoesNotExist:
+        return False
+    return found_patient
 
 def add_test_to_patient(in_data):
     patient = find_patient(in_data[id])
-    patient['test_name'].append(in_data['test_name'])
-    patient['test_result'].append(in_data['test_result'])
-    print_database()
+    if patient is False:
+        return "Patient ID {} not found in database.".format(in_data['id']),\
+               400
+    patient.test_name.append(in_data['test_name'])
+    patient.test_result.append(in_data['test_result'])
+    patient.save()
+    return "Succesfully added test.", 200
 
 def add_test_validation(in_data):
     expected_keys = ["id", "test_name", "test_result"]
