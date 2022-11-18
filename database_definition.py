@@ -3,6 +3,7 @@ from pymodm import MongoModel, fields
 
 class Patient(MongoModel):
     """Definition of a patient record in the database
+
     """
     name = fields.CharField()
     id = fields.IntegerField(primary_key=True)
